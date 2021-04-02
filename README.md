@@ -27,7 +27,7 @@ npm run build
 ## 起動方法
 
 ```bash
-node .
+./bin/run
 ```
 
 ## 検討中の機能
