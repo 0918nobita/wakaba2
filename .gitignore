@@ -1,2 +1,4 @@
 /node_modules
+/userData
 /.env
+/index.js
