@@ -28,10 +28,10 @@
   },
   "devDependencies": {
     "@types/puppeteer-core": "5.4.0",
-    "ts-node": "9.1.1",
     "typescript": "4.2.3"
   },
   "oclif": {
-    "bin": "ouj"
+    "bin": "ouj",
+    "commands": "lib/commands"
   }
 }
