@@ -1,0 +1,12 @@
+{
+  "name": "ouj-cli",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "0918nobita <nobita.0918@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "8.2.0",
+    "puppeteer-core": "8.0.0"
+  }
+}
