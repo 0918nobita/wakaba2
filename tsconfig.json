@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
+    "noLib": true,
     "outDir": "./lib",
     "rootDir": "./src",
-    "importHelpers": true,
     "locale": "ja",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
