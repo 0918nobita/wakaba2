@@ -1,6 +1,7 @@
 {
+  "private": true,
   "name": "ouj-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "0918nobita <nobita.0918@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -22,8 +23,10 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@types/inquirer": "7.3.1",
     "dotenv": "8.2.0",
     "fp-ts": "2.9.5",
+    "inquirer": "8.0.0",
     "io-ts": "2.2.16",
     "puppeteer-core": "8.0.0"
   },
