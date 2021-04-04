@@ -3,10 +3,11 @@
 import * as E from 'fp-ts/Either';
 import { pipe } from 'fp-ts/function';
 import fs from 'fs';
-import { prompt } from 'inquirer';
 import * as t from 'io-ts';
-import path from 'path';
 import puppeteer, { Browser, Page } from 'puppeteer-core';
+
+import { init } from './commands';
+import { configFilePath } from './config';
 
 const { version } = require('../package.json');
 
@@ -22,19 +23,10 @@ const saveDataRT = t.type({
 
 type SaveData = t.TypeOf<typeof saveDataRT>;
 
-const configFilePath = path.join(__dirname, '../config.json');
-
-const init = async (): Promise<void> => {
-  const { executablePath } = await prompt({ type: 'input', name: 'executablePath', message: 'Path to the executable of Chrome browser' });
-  const { username } = await prompt({ type: 'input', name: 'username' });
-  const { password } = await prompt({ type: 'password', name: 'password' });
-  fs.writeFileSync(configFilePath, JSON.stringify({ executablePath, ouj: { username, password } }));
-};
-
 if (argv.length >= 3) {
   switch (argv[2]) {
     case 'init':
-      init().catch((e) => {
+      init(configFilePath).catch((e) => {
         console.error('Error occurred while initializing configuration');
         console.error(e);
         process.exit(1);
@@ -96,17 +88,17 @@ if (argv.length >= 3) {
 
       const login = async (page: Page): Promise<void> => {
         await page.goto('https://v.ouj.ac.jp/view/ouj');
-      
+
         const button = await page.waitForSelector('.login-button');
         await button!.click();
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
-      
+
         await page.type('input[name="username"]', saveData.ouj.username);
         await page.type('input[name="password"]', saveData.ouj.password);
         const submitButton = await page.waitForSelector('.btn-submit');
         await submitButton!.click();
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
-      
+
         console.log('Successfully logged in');
       };
 
