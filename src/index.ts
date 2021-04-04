@@ -1,6 +1,6 @@
 /// <reference path="../node_modules/better-typescript-lib/lib.esnext.d.ts" />
 
-import { init, vod } from './commands';
+import { course, init, vod } from './commands';
 import { configFilePath } from './config';
 
 const { version } = require('../package.json');
@@ -11,6 +11,10 @@ const main = async () => {
     try {
         if (argv.length >= 3) {
             switch (argv[2]) {
+                case 'co':
+                case 'course':
+                    await course();
+                    break;
                 case 'init':
                     await init(configFilePath);
                     break;
