@@ -4,7 +4,7 @@ import fs from 'fs';
 import * as t from 'io-ts';
 import puppeteer, { Browser, Page } from 'puppeteer-core';
 
-const saveDataRT = t.type({
+const configRT = t.type({
     executablePath: t.string,
     ouj: t.type({
         username: t.string,
@@ -12,7 +12,7 @@ const saveDataRT = t.type({
     }),
 });
 
-type SaveData = t.TypeOf<typeof saveDataRT>;  
+type Config = t.TypeOf<typeof configRT>;  
 
 export const vod = async (configFilePath: string) => {
     if (!fs.existsSync(configFilePath)) {
@@ -37,10 +37,10 @@ export const vod = async (configFilePath: string) => {
         process.exit(1);
     }
 
-    const saveData: SaveData =
+    const config: Config =
         pipe(
             parseResult,
-            saveDataRT.decode,
+            configRT.decode,
             E.getOrElseW(() => {
                 console.error('Invalid configuration');
                 process.exit(1);
@@ -50,7 +50,7 @@ export const vod = async (configFilePath: string) => {
     const launchBrowser = (): Promise<Browser> =>
         puppeteer.launch({
             headless: false,
-            executablePath: saveData.executablePath,
+            executablePath: config.executablePath,
             ignoreDefaultArgs: ['--mute-audio'],
             userDataDir: './userData',
         });
@@ -72,8 +72,8 @@ export const vod = async (configFilePath: string) => {
         await button!.click();
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
 
-        await page.type('input[name="username"]', saveData.ouj.username);
-        await page.type('input[name="password"]', saveData.ouj.password);
+        await page.type('input[name="username"]', config.ouj.username);
+        await page.type('input[name="password"]', config.ouj.password);
         const submitButton = await page.waitForSelector('.btn-submit');
         await submitButton!.click();
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
