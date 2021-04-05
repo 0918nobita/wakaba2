@@ -2,7 +2,7 @@
   "private": true,
   "name": "ouj-cli",
   "description": "放送大学の VOD システムを快適に利用するための CLI ツール",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "0918nobita <nobita.0918@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -29,11 +29,11 @@
     "dev": "webpack -w"
   },
   "dependencies": {
-    "inquirer": "8.0.0",
     "puppeteer-core": "8.0.0"
   },
   "devDependencies": {
     "fable-loader": "2.1.9",
+    "inquirer": "8.0.0",
     "ts-node": "9.1.1",
     "typescript": "4.2.3",
     "webpack": "5.30.0",
