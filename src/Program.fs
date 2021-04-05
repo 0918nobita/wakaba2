@@ -37,7 +37,7 @@ then
         if not (fs.existsSync(U2.Case1 configFilePath))
         then
             eprintf "Configuration file not found"
-            eprintf "In order to generate one, please execute \`ouj init\`."
+            eprintf "In order to generate one, please execute `ouj init`."
             ``process``.exit 1
 
         let config = Json.parse (fs.readFileSync(configFilePath)?toString()) :?> IConfig
