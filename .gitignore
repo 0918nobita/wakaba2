@@ -1,5 +1,9 @@
+.fable
+.ionide
+
 /node_modules
 /lib
+/src/bin
+/src/obj
 /userData
-/.env
 /config.json

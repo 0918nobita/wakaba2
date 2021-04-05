@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Json.fs" />
+    <Compile Include="Package.fs" />
+    <Compile Include="Inquirer.fs" />
+    <Compile Include="Puppeteer.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.Core" Version="3.2.3" />
+    <PackageReference Include="Fable.Node" Version="1.2.0" />
+    <PackageReference Include="Fable.Promise" Version="2.2.0" />
+  </ItemGroup>
+</Project>
