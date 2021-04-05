@@ -1,7 +1,8 @@
 {
   "private": true,
   "name": "ouj-cli",
-  "version": "0.1.4",
+  "description": "放送大学の VOD システムを快適に利用するための CLI ツール",
+  "version": "0.1.5",
   "author": "0918nobita <nobita.0918@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -23,7 +24,7 @@
     "ouj": "./bin/run"
   },
   "scripts": {
-    "prepublishOnly": "webpack",
+    "prepublishOnly": "webpack --mode production",
     "build": "webpack",
     "dev": "webpack -w"
   },
