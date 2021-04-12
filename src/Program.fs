@@ -21,9 +21,9 @@ then
     match argv.[2] with
     | "init" ->
         promise {
-            let! executablePath = Inquirer.inputQuestion "executablePath" (Some "Path to Chrome executable")
-            let! userName = Inquirer.inputQuestion "username" None
-            let! password = Inquirer.passwordQuestion "password" None
+            let! executablePath = Inquirer.Wrapper.InputQuestion("executablePath", "Path to Chrome executable")
+            let! userName = Inquirer.Wrapper.InputQuestion("username")
+            let! password = Inquirer.Wrapper.PasswordQuestion("password")
             fs.writeFileSync(configFilePath, Json.stringify (createObj [
                 "executablePath" ==> executablePath
                 "ouj" ==> createObj [
