@@ -16,14 +16,16 @@ type IConfig =
     abstract executablePath : string
     abstract ouj : IOujAccountInfo
 
+type Prompt = Inquirer.Wrapper
+
 if Array.length argv >= 3
 then
     match argv.[2] with
     | "init" ->
         promise {
-            let! executablePath = Inquirer.Wrapper.InputQuestion("executablePath", "Path to Chrome executable")
-            let! userName = Inquirer.Wrapper.InputQuestion("username")
-            let! password = Inquirer.Wrapper.PasswordQuestion("password")
+            let! executablePath = Prompt.InputQuestion(name = "executablePath", message = "Path to Chrome executable")
+            let! userName = Prompt.InputQuestion(name = "username")
+            let! password = Prompt.PasswordQuestion(name = "password")
             fs.writeFileSync(configFilePath, Json.stringify (createObj [
                 "executablePath" ==> executablePath
                 "ouj" ==> createObj [
