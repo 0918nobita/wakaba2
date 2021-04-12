@@ -22,8 +22,20 @@ if Array.length argv >= 3
 then
     match argv.[2] with
     | "init" ->
+        let askExecutablePath () : JS.Promise<string> =
+            let name = "executablePath"
+            let message = "Path to the Chrome executable"
+            let platform = ``process``.platform
+            match platform with
+            | Base.Platform.Darwin ->
+                Prompt.InputQuestion(name, message, defaultValue = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+            | Base.Platform.Linux ->
+                Prompt.InputQuestion(name, message, defaultValue = "/usr/bin/google-chrome")
+            | _ ->
+                Prompt.InputQuestion(name, message)
+
         promise {
-            let! executablePath = Prompt.InputQuestion(name = "executablePath", message = "Path to Chrome executable")
+            let! executablePath = askExecutablePath ()
             let! userName = Prompt.InputQuestion(name = "username")
             let! password = Prompt.PasswordQuestion(name = "password")
             fs.writeFileSync(configFilePath, Json.stringify (createObj [
