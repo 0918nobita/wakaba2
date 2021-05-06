@@ -4,10 +4,6 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Node
 
-let argv = ``process``.argv.ToArray()
-
-let configFilePath = path.join(__dirname, "../config.json")
-
 type IOujAccountInfo =
     abstract username : string
     abstract password : string
@@ -18,7 +14,7 @@ type IConfig =
 
 type Prompt = Inquirer.Wrapper
 
-let init () =
+let init configFilePath =
     let askExecutablePath () : JS.Promise<string> =
         let name = "executablePath"
         let message = "Path to the Chrome executable"
@@ -45,7 +41,7 @@ let init () =
     }
     |> ignore
 
-let vod () =
+let vod configFilePath =
     if not (fs.existsSync(U2.Case1 configFilePath))
     then
         eprintf "Configuration file not found"
@@ -81,11 +77,13 @@ let vod () =
     |> ignore
 
 let () =
+    let argv = ``process``.argv.ToArray()
+    let configFilePath = path.join(__dirname, "../config.json")
     if Array.length argv >= 3
     then
         match argv.[2] with
-        | "init" -> init ()
-        | "vod" -> vod ()
+        | "init" -> init configFilePath
+        | "vod" -> vod configFilePath
         | cmd ->
             eprintfn "Unknown command: %s" cmd
             ``process``.exit 1
