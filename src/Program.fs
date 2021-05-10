@@ -41,6 +41,11 @@ let init configFilePath =
     }
     |> ignore
 
+type IResponse =
+    abstract json: unit -> JS.Promise<obj>
+
+let [<Global>] fetch: string -> JS.Promise<IResponse> = jsNative
+
 let vod configFilePath =
     if not (fs.existsSync(U2.Case1 configFilePath))
     then
@@ -72,7 +77,11 @@ let vod configFilePath =
         do! page.``type`` "input[name=\"password\"]" config.ouj.password
         let! submitButton = page.waitForSelector ".btn-submit"
         do! submitButton?click()
-        return! page.waitForNavigation !!{| waitUntil = Puppeteer.NetworkIdle0 |}
+        do! page.waitForNavigation !!{| waitUntil = Puppeteer.NetworkIdle0 |}
+        let! data = page.evaluate(fun () ->
+            (fetch "https://v.ouj.ac.jp/v1/tenants/1/categories")
+                .``then``(fun (res: IResponse) -> res.json()))
+        JS.console.log(data)
     }
     |> ignore
 

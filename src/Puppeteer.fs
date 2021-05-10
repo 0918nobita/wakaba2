@@ -14,6 +14,7 @@ type IWaitForOptions =
     abstract waitUntil : LifeCycleEvent option with get, set
 
 type IPage =
+    abstract evaluate : (unit -> 'a) -> JS.Promise<'b>
     abstract goto : url:string -> JS.Promise<unit>
     abstract setUserAgent : string -> JS.Promise<unit>
     abstract ``type`` : string -> string -> JS.Promise<unit>
