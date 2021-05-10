@@ -76,6 +76,10 @@ let vod configFilePath =
     }
     |> ignore
 
+let reset configFilePath =
+    fs.unlinkSync(U2.Case1 configFilePath)
+    printfn "Done"
+
 let () =
     let argv = ``process``.argv.ToArray()
     let configFilePath = path.join(__dirname, "../config.json")
@@ -84,6 +88,7 @@ let () =
         match argv.[2] with
         | "init" -> init configFilePath
         | "vod" -> vod configFilePath
+        | "reset" -> reset configFilePath
         | cmd ->
             eprintfn "Unknown command: %s" cmd
             ``process``.exit 1
