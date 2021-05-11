@@ -1,6 +1,7 @@
 .fable
 .ionide
 
+*.sqlite3
 /node_modules
 /lib
 /src/bin

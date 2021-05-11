@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
-    "puppeteer-core": "8.0.0"
+    "puppeteer-core": "8.0.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

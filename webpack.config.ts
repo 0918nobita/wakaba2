@@ -12,6 +12,7 @@ const config: webpack.Configuration = {
     },
     externals: [
         'puppeteer-core',
+        'sqlite3',
     ],
     module: {
         rules: [

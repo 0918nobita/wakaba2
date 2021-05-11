@@ -7,6 +7,7 @@
     <Compile Include="Package.fs" />
     <Compile Include="Inquirer.fs" />
     <Compile Include="Puppeteer.fs" />
+    <Compile Include="Sqlite.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
