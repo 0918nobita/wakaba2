@@ -111,6 +111,7 @@ let queryBuilderTest () =
     QB.select (QB.Table "users") (QB.ColsPattern "*")
     |> QB.orderBy "age" QB.Asc
     |> QB.orderBy "address" QB.Desc
+    |> QB.where "gender = 'male'"
     |> QB.build
     |> printfn "%s"
 

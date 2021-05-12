@@ -22,8 +22,8 @@ type OrderByClause =
     | OrderByClause of OrderByClauseItem list
     override this.ToString() =
         match this with
-        | OrderByClause([]) -> ""
-        | OrderByClause(items) ->
+        | OrderByClause [] -> ""
+        | OrderByClause items ->
             let itemsStr =
                 items
                 |> List.map (fun item -> string item)
@@ -31,25 +31,37 @@ type OrderByClause =
             "ORDER BY " + itemsStr
 
 type WhereClause =
-    | WhereClause of string option
+    | WhereClause of string
     override this.ToString() =
         match this with
-        | WhereClause(None) -> ""
-        | WhereClause(Some(cond)) -> "WHERE " + cond
+        | WhereClause cond -> "WHERE " + cond
 
-type SelectStmt = Select of table : string * cols : string * OrderByClause * WhereClause
+type SelectStmt = Select of table : string * cols : string * OrderByClause * WhereClause option
 
-let select (Table(table)) (ColsPattern(cols)) : SelectStmt =
-    Select(table, cols, OrderByClause [], WhereClause None)
+let select (Table table) (ColsPattern cols) : SelectStmt =
+    Select(table, cols, OrderByClause [], None)
 
 let orderBy
         (col: string)
         (order : SelectOrder)
-        (Select(table, cols, (OrderByClause(items)), where)) : SelectStmt =
-    Select(table, cols, OrderByClause(items @ [OrderByClauseItem(col, order)]), where)
+        (Select(table, cols, (OrderByClause items), where)) : SelectStmt =
+    Select(
+        table,
+        cols,
+        OrderByClause(items @ [OrderByClauseItem(col, order)]),
+        where)
+
+let where (cond : string) (Select(table, cols, order, _)) : SelectStmt =
+    Select(table, cols, order, Some(WhereClause cond))
 
 let build (stmt : SelectStmt) : string =
     match stmt with
-    | Select(table, cols, order, where) ->
-        ["SELECT " + cols + " FROM " + table; string order; string where]
+    | Select(table, cols, order, whereOpt) ->
+        [
+            "SELECT " + cols + " FROM " + table
+            string order
+            whereOpt
+            |> Option.map string
+            |> Option.defaultValue ""
+        ]
         |> String.concat " "
