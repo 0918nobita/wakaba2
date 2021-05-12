@@ -8,6 +8,7 @@
     <Compile Include="Inquirer.fs" />
     <Compile Include="Puppeteer.fs" />
     <Compile Include="Sqlite.fs" />
+    <Compile Include="QueryBuilder.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

@@ -89,7 +89,7 @@ let reset configFilePath =
     fs.unlinkSync(U2.Case1 configFilePath)
     printfn "Done"
 
-let () =
+let dbTest () =
     let sqlite3 = Sqlite.verbose()
 
     use db = sqlite3.Database("test.sqlite3")
@@ -105,6 +105,16 @@ let () =
             stmt.Run([| "Alice"; "7" |]))
     )
 
+module QB = QueryBuilder
+
+let queryBuilderTest () =
+    QB.select (QB.Table "users") (QB.ColsPattern "*")
+    |> QB.orderBy "age" QB.Asc
+    |> QB.orderBy "address" QB.Desc
+    |> QB.build
+    |> printfn "%s"
+
+let () =
     let argv = ``process``.argv.ToArray()
     let configFilePath = path.join(__dirname, "../config.json")
     if Array.length argv >= 3
@@ -113,6 +123,8 @@ let () =
         | "init" -> init configFilePath
         | "vod" -> vod configFilePath
         | "reset" -> reset configFilePath
+        | "db" -> dbTest ()
+        | "query" -> queryBuilderTest ()
         | cmd ->
             eprintfn "Unknown command: %s" cmd
             ``process``.exit 1
