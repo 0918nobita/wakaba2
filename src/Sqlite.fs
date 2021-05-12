@@ -9,6 +9,7 @@ type IStatement =
     [<Emit("$0.run($1...)")>]
     abstract run: string[] -> unit
 
+/// <summary>Statement object wrapper</summary>
 type Statement(stmt: IStatement) =
     member _.Finalize = stmt.finalize
     member _.Run = stmt.run
@@ -23,6 +24,7 @@ type IDatabase =
     abstract run: string -> unit
     abstract serialize: (unit -> unit) -> unit
 
+/// <summary>Database object wrapper</summary>
 type Database(db: IDatabase) =
     member _.Close = db.close
     member _.Prepare(sql: string) = new Statement(db.prepare(sql))
@@ -36,10 +38,11 @@ type ISqliteInstance =
     [<Emit("new $0.Database($1)")>]
     abstract Database: string -> IDatabase
 
+/// <summary>Sqlite3 object wrapper</summary>
 type SqliteInstance(sqlite: ISqliteInstance) =
     member _.Database(name: string) = new Database(sqlite.Database(name))
 
-type ISqliteModule =
+type private ISqliteModule =
     abstract verbose: unit -> ISqliteInstance
 
 [<ImportDefault("sqlite3")>]

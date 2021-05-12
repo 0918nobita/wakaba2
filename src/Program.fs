@@ -90,6 +90,21 @@ let reset configFilePath =
     printfn "Done"
 
 let () =
+    let sqlite3 = Sqlite.verbose()
+
+    use db = sqlite3.Database("test.sqlite3")
+
+    db.Serialize(fun () ->
+        db.Run("CREATE TABLE IF NOT EXISTS test(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)")
+
+        using (db.Prepare("INSERT INTO test(name) VALUES(?)")) (fun stmt ->
+            for i in 1..10 do
+                stmt.Run([| sprintf "User %d" i |]))
+
+        using (db.Prepare("UPDATE test SET name = ? WHERE id = ?")) (fun stmt ->
+            stmt.Run([| "Alice"; "7" |]))
+    )
+
     let argv = ``process``.argv.ToArray()
     let configFilePath = path.join(__dirname, "../config.json")
     if Array.length argv >= 3
