@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OujCli", "OujCli\OujCli.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "QueryBuilder", "QueryBuilder\QueryBuilder.fsproj", "{B8CEF3D7-EC4D-4F42-9482-2C88EE99906F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "QueryBuilder.Tests", "QueryBuilder.Tests\QueryBuilder.Tests.fsproj", "{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{B8CEF3D7-EC4D-4F42-9482-2C88EE99906F}.Release|x64.Build.0 = Release|Any CPU
 		{B8CEF3D7-EC4D-4F42-9482-2C88EE99906F}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8CEF3D7-EC4D-4F42-9482-2C88EE99906F}.Release|x86.Build.0 = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|x64.Build.0 = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Debug|x86.Build.0 = Debug|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|x64.ActiveCfg = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|x64.Build.0 = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|x86.ActiveCfg = Release|Any CPU
+		{483848DC-D591-435B-AF7B-A1D5E3ACDEDE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
