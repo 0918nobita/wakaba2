@@ -4,6 +4,6 @@
 *.sqlite3
 /node_modules
 /lib
-/src/bin
-/src/obj
+**/src/bin
+**/src/obj
 /config.json

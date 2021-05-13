@@ -5,6 +5,10 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OujCli", "src\OujCli.fsproj", "{C5B9AEFE-5311-49DE-A1D7-94764D5EB63B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QueryBuilder", "QueryBuilder", "{20E1C9C5-C123-4B3B-81C5-7F2681BD83BD}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "QueryBuilder", "QueryBuilder\src\QueryBuilder.fsproj", "{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,20 @@ Global
 		{C5B9AEFE-5311-49DE-A1D7-94764D5EB63B}.Release|x64.Build.0 = Release|Any CPU
 		{C5B9AEFE-5311-49DE-A1D7-94764D5EB63B}.Release|x86.ActiveCfg = Release|Any CPU
 		{C5B9AEFE-5311-49DE-A1D7-94764D5EB63B}.Release|x86.Build.0 = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|x64.Build.0 = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Debug|x86.Build.0 = Debug|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|x64.ActiveCfg = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|x64.Build.0 = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|x86.ActiveCfg = Release|Any CPU
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE46A426-D359-4FA1-9FAF-535E8F9F6FF8} = {20E1C9C5-C123-4B3B-81C5-7F2681BD83BD}
 	EndGlobalSection
 EndGlobal

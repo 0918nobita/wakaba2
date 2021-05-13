@@ -1,4 +1,4 @@
-module QueryBuilder
+module Fable.SQLite3.QueryBuilder
 
 type Table = Table of name : string
 
