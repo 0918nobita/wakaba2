@@ -1,6 +1,5 @@
 module QueryBuilder.Tests
 
-open System.Reflection
 open NUnit.Framework
 open Fable.SQLite3
 
@@ -8,13 +7,10 @@ module QB = QueryBuilder
 
 [<Test>]
 let Test1 () =
-    let queryBuilderType = typeof<QueryBuilder.Marker>.DeclaringType
     let combineMethodInfo =
-        queryBuilderType
-            .GetMethod(
-                "combine",
-                BindingFlags.Static ||| BindingFlags.NonPublic)
-    Assert.NotNull(combineMethodInfo)
+        typeof<QueryBuilder.Marker>.DeclaringType
+        |> ReflectionUtil.getPrivateStaticMethod "combine"
+        |> Option.defaultWith (fun () -> failwith "Failed to get `combine` method info")
     Assert.AreEqual(
         "A B C",
         combineMethodInfo.Invoke(null, [| ["A"; "B"; ""; "C"] |]))
