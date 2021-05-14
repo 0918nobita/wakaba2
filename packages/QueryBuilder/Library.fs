@@ -1,5 +1,7 @@
 module Fable.SQLite3.QueryBuilder
 
+open System.Text
+
 type Table = Table of name : string
 
 type ColsPattern = ColsPattern of string
@@ -54,6 +56,19 @@ let orderBy
 let where (cond : string) (Select(table, cols, order, _)) : SelectStmt =
     Select(table, cols, order, Some(WhereClause cond))
 
+let combine (strs : string list) : string =
+    let folder (sb : StringBuilder) (s : string) =
+        if sb.Length = 0
+        then
+            sb.Append s
+        else
+            if s = ""
+            then sb
+            else (sb.Append " ").Append s
+    strs
+    |> List.fold folder (StringBuilder())
+    |> string
+
 let build (stmt : SelectStmt) : string =
     match stmt with
     | Select(table, cols, order, whereOpt) ->
@@ -64,4 +79,4 @@ let build (stmt : SelectStmt) : string =
             |> Option.map string
             |> Option.defaultValue ""
         ]
-        |> String.concat " "
+        |> combine
