@@ -4,7 +4,7 @@ import * as webpack from 'webpack';
 const config: webpack.Configuration = {
     target: 'node',
     mode: 'development',
-    entry: './OujCli/OujCli.fsproj',
+    entry: './packages/OujCli/OujCli.fsproj',
     output: {
         libraryTarget: 'commonjs',
         path: path.join(__dirname, './lib'),
