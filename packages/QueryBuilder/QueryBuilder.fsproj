@@ -1,9 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <!-- General -->
+    <Title>Query builder for Fable + node-sqlite3</Title>
+    <Version>0.1.0</Version>
+    <Authors>Kodai Matsumoto</Authors>
+    <Copyright>Copyright 2021 Kodai Matsumoto</Copyright>
+
+    <!-- Build settings -->
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <!-- NuGet settings -->
+    <PackageId>Fable.SQLite3.QueryBuilder</PackageId>
+    <PackageTags>fsharp;fable;sqlite;database;query-builder</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/0918nobita/ouj-cli</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="Library.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
