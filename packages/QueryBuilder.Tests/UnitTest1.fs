@@ -40,10 +40,6 @@ let Test1 () =
 let Test2 () =
     Assert.AreEqual(
         "SELECT * FROM users",
-        QB.select (QB.Table "users") (QB.ColsPattern "*")
+        QB.Table "users"
+        |> QB.select (QB.ColsPattern "*")
         |> QB.build)
-
-[<Test>]
-let Test3 () =
-    let revRevIsOrig xs = xs |> List.rev |> List.rev = xs
-    Check.VerboseThrowOnFailure revRevIsOrig

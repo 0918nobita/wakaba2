@@ -42,7 +42,7 @@ type WhereClause =
 
 type SelectStmt = Select of table : string * cols : string * OrderByClause * WhereClause option
 
-let select (Table table) (ColsPattern cols) : SelectStmt =
+let select (ColsPattern cols) (Table table) : SelectStmt =
     Select(table, cols, OrderByClause [], None)
 
 let orderBy
