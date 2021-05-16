@@ -24,27 +24,27 @@ let private combine2 (strs : string list) : string =
 [<Measure>] type ms
 [<Measure>] type ns
 
-let convertMsToNs (ms: float<ms>) : float<ns> =
-    LanguagePrimitives.FloatWithMeasure (float ms * 1000000.0)
+let private convertMsToNs (ms : float<ms>) : float<ns> =
+    ms * 1000000.0<ns/ms>
+
+let private measureExecutionTime (numOfTimes : int) (op : unit -> 'a) : float<ns> =
+    let stopWatch = Stopwatch.StartNew()
+    for _ in 1..numOfTimes do
+        ignore <| op ()
+    stopWatch.Stop()
+    let elapsed = 1.0<ms> * float stopWatch.ElapsedMilliseconds
+    elapsed / float numOfTimes
+    |> convertMsToNs
 
 [<EntryPoint>]
 let main _ =
     let list = [""; "A"; ""; "B"; "C"; ""]
     let numOfTimes = 100000
-    let stopWatch = Stopwatch.StartNew()
-    for _ in 1..numOfTimes do
-        ignore <| combine1 list
-    stopWatch.Stop()
-    let elapsed: float<ms> =
-        LanguagePrimitives.FloatWithMeasure (float stopWatch.ElapsedMilliseconds)
-    elapsed / float numOfTimes
-    |> convertMsToNs
+
+    measureExecutionTime numOfTimes (fun () -> combine1 list)
     |> printfn "combine1: %-3.0fns"
-    stopWatch.Restart()
-    for _ in 1..numOfTimes do
-        ignore <| combine2 list
-    stopWatch.Stop()
-    printfn
-        "combine2: %-3.0fns"
-        (float stopWatch.ElapsedMilliseconds / float numOfTimes * 1000000.0)
+
+    measureExecutionTime numOfTimes (fun () -> combine2 list)
+    |> printfn "combine2: %-3.0fns"
+
     0
