@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const CDP = require('chrome-remote-interface');
+
+(async () => {
+    const client = await CDP();
+    const { Network, Page } = client;
+    await Network.setUserAgentOverride({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36' });
+    await Network.enable();
+    await Page.enable();
+    await Page.navigate({ url: 'https://v.ouj.ac.jp/view/ouj/#/login' });
+    await Page.loadEventFired();
+    console.log('Complete.');
+})();
