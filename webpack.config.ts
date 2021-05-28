@@ -2,18 +2,13 @@ import path from 'path';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-    target: 'node',
     mode: 'development',
-    entry: './packages/OujCli/OujCli.fsproj',
+    entry: './src/Wakaba2.fsproj',
+    devtool: 'inline-source-map',
     output: {
-        libraryTarget: 'commonjs',
-        path: path.join(__dirname, './lib'),
-        filename: 'index.js',
+        path: path.join(__dirname, './dist'),
+        filename: 'contentScript.js',
     },
-    externals: [
-        'puppeteer-core',
-        'sqlite3',
-    ],
     module: {
         rules: [
             {

@@ -1,7 +1,10 @@
-.fable
-.ionide
-
-*.sqlite3
+/.fable
+/.ionide
+/.paket
 /node_modules
-/lib
-/config.json
+/paket-files
+
+dist/contentScript.js
+
+bin
+obj

@@ -1,43 +1,26 @@
 {
   "private": true,
-  "name": "ouj-cli",
-  "description": "放送大学の VOD システムを快適に利用するための CLI ツール",
-  "version": "0.1.8",
+  "name": "wakaba2",
+  "description": "放送大学のWebアプリをより快適に利用するためのChrome拡張機能",
+  "version": "0.1.0",
   "author": "0918nobita <nobita.0918@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "cli",
-    "automation"
-  ],
+  "keywords": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/0918nobita/ouj-cli.git"
   },
-  "files": [
-    "bin",
-    "lib"
-  ],
-  "engines": {
-    "node": ">=12.0.0"
-  },
-  "bin": {
-    "ouj": "./bin/run"
-  },
   "scripts": {
     "prepublishOnly": "webpack --mode production",
     "build": "webpack",
+    "build:prod": "webpack --mode production",
     "dev": "webpack -w"
   },
-  "dependencies": {
-    "node-fetch": "^2.6.1",
-    "puppeteer-core": "8.0.0",
-    "sqlite3": "^5.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "fable-compiler": "^2.13.0",
     "fable-loader": "2.1.9",
-    "inquirer": "8.0.0",
     "ts-node": "9.1.1",
     "typescript": "4.2.3",
     "webpack": "5.30.0",

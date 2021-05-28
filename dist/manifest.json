@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Wakaba2",
+    "version": "0.1.0",
+    "description": "放送大学のWebアプリをより快適に利用するためのChrome拡張機能",
+    "permissions": ["<all_urls>", "activeTab", "storage"],
+    "options_page": "options.html",
+    "content_scripts": [
+        {
+            "matches": ["https://*.wakaba.ouj.ac.jp/*"],
+            "js": ["contentScript.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
