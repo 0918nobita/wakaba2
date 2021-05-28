@@ -2,20 +2,36 @@
 
 放送大学の Web アプリを快適に利用するための Chrome 拡張機能
 
-## インストール方法
+## インストール手順
 
-``/dist`` をパッケージ化していない拡張機能として Chrome に読み込む
-
-## 起動手順
-
-1. Chrome を ``--remote-debugging-port`` オプション付きで起動する
+1. 依存している npm パッケージをインストールする
 
 ```bash
-./scripts/launch-chrome
+npm i
 ```
 
-2. ↑は実行中のままで別途シェルを立ち上げて、Chrome の UserAgent 設定を一時的に上書きするための Node.js プログラムを起動する
+2. 依存している nuget パッケージをインストールする
 
 ```bash
-./scripts/setup
+dotnet tool restore
+dotnet paket restore
+dotnet restore
+```
+
+3. 拡張機能をビルドする
+
+```bash
+npm run build # または npm run build:prod
+```
+
+3. ``/dist`` をパッケージ化していない拡張機能として Chrome に読み込む
+
+## Linux 版の Chrome で利用する場合の注意点
+
+UserAgent が Linux 版の Chrome のものになっていると VOD システムが利用できないため、  
+以下のようにスクリプトから Chrome を起動するようにしてください。  
+(一時的に UserAgent が Windows 版 Chrome のものに上書きされます)
+
+```bash
+./scripts/launch
 ```

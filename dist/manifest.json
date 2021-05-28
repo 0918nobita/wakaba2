@@ -1,20 +1,20 @@
 {
-    "manifest_version": 2,
-    "name": "Wakaba2",
-    "version": "0.1.0",
-    "description": "放送大学の Web アプリをより快適に利用するための Chrome 拡張機能",
-    "permissions": ["https://v.ouj.ac.jp/*", "webRequest", "webRequestBlocking"],
-    "browser_action": {
-        "default_title": "Wakaba 2 ポータルを表示"
-    },
-    "background": {
-        "scripts": ["background.js"]
-    },
-    "content_scripts": [
-        {
-            "matches": ["https://v.ouj.ac.jp/*"],
-            "js": ["contentScript.js"],
-            "run_at": "document_end"
-        }
-    ]
+  "manifest_version": 2,
+  "name": "Wakaba2",
+  "version": "0.1.0",
+  "description": "放送大学の Web アプリをより快適に利用するための Chrome 拡張機能",
+  "permissions": ["https://v.ouj.ac.jp/*"],
+  "browser_action": {
+    "default_title": "Wakaba 2 ポータルを表示"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://v.ouj.ac.jp/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

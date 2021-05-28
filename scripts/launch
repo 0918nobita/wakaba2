@@ -1,0 +1,6 @@
+#!/bin/sh -eu
+
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
+
+google-chrome-stable --remote-debugging-port=9222 &> /dev/null &
+node "${SCRIPT_DIR}/setup.js"
