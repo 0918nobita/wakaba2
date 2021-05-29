@@ -24,7 +24,7 @@ dotnet restore
 npm run build # または npm run build:prod
 ```
 
-3. ``/dist`` をパッケージ化していない拡張機能として Chrome に読み込む
+4. ``/dist`` をパッケージ化していない拡張機能として Chrome に読み込む
 
 ## Linux 版の Chrome で利用する場合の注意点
 

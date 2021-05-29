@@ -1,7 +1,7 @@
-const CDP = require('chrome-remote-interface');
+import CDP = require('chrome-remote-interface');
 
-const sleep = (duration) =>
-    new Promise((resolve) =>
+const sleep = (duration: number) =>
+    new Promise<void>((resolve) =>
         setTimeout(() => resolve(), duration));
 
 const attemptCreatingCDPClient = async () => {

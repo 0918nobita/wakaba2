@@ -3,4 +3,4 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 google-chrome-stable --remote-debugging-port=9222 &> /dev/null &
-node "${SCRIPT_DIR}/setup.js"
+npx ts-node --project "${SCRIPT_DIR}/../tsconfig.json" --files "${SCRIPT_DIR}/setup.ts"

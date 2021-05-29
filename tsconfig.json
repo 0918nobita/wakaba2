@@ -14,6 +14,9 @@
     "noPropertyAccessFromIndexSignature": true,
     "esModuleInterop": true
   },
+  "files": [
+    "scripts/chrome-remote-interface.d.ts"
+  ],
   "include": [
     "webpack.config.ts"
   ]
