@@ -31,7 +31,7 @@ npm run build # または npm run build:prod
 
 4. ``/dist`` をパッケージ化していない拡張機能として Chrome に読み込む
 
-## VS Code DevConrainer を利用して開発する
+## VS Code DevContainer を利用して開発する
 
 VS Code でこのリポジトリのルートディレクトリを開き、コマンドパレットから ``Remote-Containers: Reopen in Container`` コマンドを実行すると Node.js + .NET 5 の開発環境が整います
 
