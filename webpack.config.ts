@@ -3,11 +3,14 @@ import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
     mode: 'development',
-    entry: './src/Wakaba2.fsproj',
+    entry: {
+        background: './src/background/background.fsproj',
+        contentScript: './src/content/content.fsproj',
+    },
     devtool: 'inline-source-map',
     output: {
-        path: path.join(__dirname, './dist'),
-        filename: 'contentScript.js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
     },
     module: {
         rules: [

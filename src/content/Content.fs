@@ -1,4 +1,4 @@
-﻿module Wakaba2
+﻿module Content
 
 open Fable.Core
 open Fable.Core.JsInterop
