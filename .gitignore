@@ -3,6 +3,7 @@
 /.paket
 /node_modules
 /paket-files
-/dist/*.js
+/dist
+
 bin
 obj

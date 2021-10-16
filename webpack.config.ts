@@ -1,5 +1,6 @@
 import path from 'path';
 import * as webpack from 'webpack';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const config: webpack.Configuration = {
     mode: 'development',
@@ -20,6 +21,13 @@ const config: webpack.Configuration = {
             }
         ],
     },
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: 'src/manifest.json' }
+            ]
+        }),
+    ],
 };
 
 export default config;
