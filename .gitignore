@@ -3,8 +3,6 @@
 /.paket
 /node_modules
 /paket-files
-
-dist/contentScript.js
-
+/dist/*.js
 bin
 obj
