@@ -1,14 +1,14 @@
 {
   "private": true,
   "name": "wakaba2",
-  "description": "放送大学のWebアプリをより快適に利用するためのChrome拡張機能",
+  "description": "放送大学のWebアプリをより快適に利用するためのブラウザ拡張機能",
   "version": "0.1.0",
   "author": "0918nobita <nobita.0918@gmail.com>",
   "license": "MIT",
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/0918nobita/ouj-cli.git"
+    "url": "https://github.com/0918nobita/wakaba2.git"
   },
   "scripts": {
     "prepublishOnly": "webpack --mode production",
@@ -16,11 +16,9 @@
     "build:prod": "webpack --mode production",
     "dev": "webpack -w"
   },
-  "dependencies": {
-    "chrome-remote-interface": "0.31.0"
-  },
   "devDependencies": {
     "@babel/core": "7.15.8",
+    "@types/node": "16.11.0",
     "fable-compiler": "2.13.0",
     "fable-loader": "2.1.9",
     "ts-node": "10.3.0",
